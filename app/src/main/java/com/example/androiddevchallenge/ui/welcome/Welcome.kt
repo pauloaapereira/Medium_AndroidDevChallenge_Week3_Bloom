@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 The Android Open Source Project
+ * Copyright 2021 Paulo Pereira
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.example.androiddevchallenge.welcome
+package com.example.androiddevchallenge.ui.welcome
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
@@ -22,12 +22,9 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.paddingFromBaseline
-import androidx.compose.material.Button
-import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
@@ -39,19 +36,20 @@ import androidx.compose.ui.draw.scale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.example.androiddevchallenge.R
+import com.example.androiddevchallenge.ui.components.BloomLoginButton
 
 @Composable
-fun Welcome() {
+fun Welcome(onLoginClick: () -> Unit = {}) {
     Surface(color = MaterialTheme.colors.primary) {
         Box(modifier = Modifier.fillMaxSize()) {
             Background()
-            LogoAndActions()
+            LogoAndActions(onLoginClick)
         }
     }
 }
 
 @Composable
-private fun LogoAndActions() {
+private fun LogoAndActions(onLoginClick: () -> Unit = {}) {
     Box(
         modifier = Modifier.fillMaxSize(),
         contentAlignment = Alignment.BottomCenter
@@ -75,30 +73,11 @@ private fun LogoAndActions() {
                     color = MaterialTheme.colors.secondary,
                     modifier = Modifier.paddingFromBaseline(top = 32.dp)
                 )
-                LoginButton(modifier = Modifier.padding(top = 40.dp))
-                TextButton(modifier = Modifier.padding(top = 24.dp), onClick = { }) {
-                    Text(text = "Log in", color = MaterialTheme.colors.secondary)
+                BloomLoginButton(modifier = Modifier.padding(top = 40.dp), text = "Create account")
+                TextButton(modifier = Modifier.padding(top = 24.dp), onClick = onLoginClick) {
+                    Text(text = "Log in", color = MaterialTheme.colors.secondary, style = MaterialTheme.typography.button)
                 }
             }
-        }
-    }
-}
-
-@Composable
-fun LoginButton(modifier: Modifier = Modifier) {
-    Box(modifier = modifier, contentAlignment = Alignment.Center) {
-        Button(
-            modifier = Modifier
-                .fillMaxWidth(.9f)
-                .height(48.dp),
-            shape = MaterialTheme.shapes.medium,
-            onClick = { },
-            colors = ButtonDefaults.buttonColors(
-                backgroundColor = MaterialTheme.colors.secondary,
-                contentColor = MaterialTheme.colors.onSecondary
-            )
-        ) {
-            Text(text = "Create account")
         }
     }
 }
