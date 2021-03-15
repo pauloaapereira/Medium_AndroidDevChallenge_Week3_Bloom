@@ -15,8 +15,35 @@
  */
 package com.example.androiddevchallenge.ui.home
 
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import androidx.compose.ui.ExperimentalComposeUiApi
+import androidx.compose.ui.Modifier
+import com.example.androiddevchallenge.ui.HomeGardenViewModel
 
+@ExperimentalComposeUiApi
 @Composable
-fun Home() {
+fun Home(viewModel: HomeGardenViewModel) {
+    val scrollState = rememberScrollState()
+    val homeGardens by viewModel.homeGardens.collectAsState(initial = listOf())
+
+    Scaffold(
+        topBar = { BloomTopBar() },
+        bottomBar = { BloomBottomBar() }
+    ) {
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .verticalScroll(scrollState)
+        ) {
+            BloomCardRow(homeGardens = homeGardens)
+            BloomImageList(homeGardens = homeGardens)
+        }
+    }
 }

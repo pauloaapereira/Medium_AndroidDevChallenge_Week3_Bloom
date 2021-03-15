@@ -21,10 +21,14 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.navigate
 import androidx.navigation.compose.rememberNavController
+import com.example.androiddevchallenge.data.HomeGardenRepository
+import com.example.androiddevchallenge.ui.HomeGardenViewModel
+import com.example.androiddevchallenge.ui.HomeGardenViewModelFactory
 import com.example.androiddevchallenge.ui.home.Home
 import com.example.androiddevchallenge.ui.login.Login
 import com.example.androiddevchallenge.ui.theme.BloomTheme
@@ -46,6 +50,10 @@ class MainActivity : AppCompatActivity() {
 @Composable
 fun Bloom() {
     val navController = rememberNavController()
+    val viewModel = viewModel(
+        HomeGardenViewModel::class.java,
+        factory = HomeGardenViewModelFactory(HomeGardenRepository())
+    )
 
     NavHost(navController, startDestination = "welcome") {
         composable("welcome") {
@@ -62,7 +70,7 @@ fun Bloom() {
                 }
             )
         }
-        composable("home") { Home() }
+        composable("home") { Home(viewModel) }
     }
 }
 

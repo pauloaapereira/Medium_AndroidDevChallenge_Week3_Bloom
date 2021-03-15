@@ -15,9 +15,11 @@
  */
 package com.example.androiddevchallenge.ui.components
 
+import androidx.annotation.DrawableRes
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.OutlinedTextField
 import androidx.compose.material.Text
@@ -27,6 +29,7 @@ import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.platform.LocalView
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 
@@ -36,6 +39,7 @@ fun BloomTextInput(
     modifier: Modifier = Modifier,
     label: String,
     value: String = "",
+    @DrawableRes leadingIcon: Int? = null,
     keyboardType: KeyboardType = KeyboardType.Text,
     onValueChanged: (String) -> Unit = {}
 ) {
@@ -47,6 +51,14 @@ fun BloomTextInput(
         value = value,
         onValueChange = onValueChanged,
         label = { Text(text = label) },
+        leadingIcon = leadingIcon?.let {
+            {
+                Icon(
+                    painter = painterResource(id = leadingIcon),
+                    contentDescription = label
+                )
+            }
+        },
         textStyle = MaterialTheme.typography.body1,
         singleLine = true,
         keyboardActions = KeyboardActions(
@@ -61,6 +73,7 @@ fun BloomTextInput(
             focusedBorderColor = MaterialTheme.colors.onSurface,
             focusedLabelColor = MaterialTheme.colors.onBackground,
             unfocusedLabelColor = MaterialTheme.colors.onBackground,
+            cursorColor = MaterialTheme.colors.onBackground
         )
     )
 }

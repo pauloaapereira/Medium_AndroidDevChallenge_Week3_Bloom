@@ -80,4 +80,7 @@ dependencies {
     androidTestImplementation "androidx.compose.ui:ui-test-junit4:$compose_version"
 
     implementation "androidx.navigation:navigation-compose:1.0.0-alpha09"
+
+    // Image Loading
+    implementation "com.google.accompanist:accompanist-glide:0.6.2"
 }
