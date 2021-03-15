@@ -1,6 +1,6 @@
 # Template repository
 
-Template repository for the Jetpack Compose [#AndroidDevChallenge](https://developer.android.com/dev-challenge).
+Template repository for the Jetpack Compose [#Bloom](https://developer.android.com/dev-challenge).
 
 ## Getting started
 Copy this repository by pressing the "Use this template" button in Github.
