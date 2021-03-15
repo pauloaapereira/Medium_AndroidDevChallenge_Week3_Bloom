@@ -2,6 +2,7 @@
 
 ## Description
 Since the Android team released Jetpack Compose first beta version, I’ve been trying my best to keep in sync with all the updates, by following the Android Dev Challenges and also by trying to reproduce my projects with it.
+
 So, I have decided to publish a new article on Medium, this time giving you a Full Development Overview on the first Mockup Application of the Week3 Android Dev Challenge, Bloom.
 
 medium
