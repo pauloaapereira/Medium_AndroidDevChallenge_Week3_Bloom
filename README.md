@@ -7,6 +7,11 @@ So, I have decided to publish a new article on Medium, this time giving you a Fu
 
 https://pauloaapereira.medium.com/android-dev-challenge-week-3-bloom-a-full-development-overview-426b57b40821
 
+## Donation 💰
+If this project motivated you and taught you something, feel free to pay me a cup of coffee. :]
+
+<a href="https://www.buymeacoffee.com/ppereira" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/yellow_img.png" alt="Buy Me A Coffee" style="height: 41px !important;width: 174px !important;box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;" ></a>
+
 ## License
 ```
 Copyright 2020 Paulo Pereira
